@@ -82,8 +82,8 @@ if (!document.createElement("canvas").getContext("webgl2")) {
   };
   document.body.appendChild(loader);
 }
-// Touch gestures belong to the game canvas only, not text/navigation controls.
-for (const eventType of ["touchmove","touchstart","touchend","touchcancel"]) {
+// Touch gestures belong to the game canvas only; preserve touch-to-click synthesis for Unity UI Toolkit Buttons.
+for (const eventType of ["touchmove"]) {
   canvas.addEventListener(eventType, evt => {
     if (evt.cancelable) evt.preventDefault();
   }, {passive:false});
